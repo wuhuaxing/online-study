@@ -1,0 +1,203 @@
+.clear {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:after {
+  content: "";
+  height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.pr {
+  position: relative;
+}
+
+.pa {
+  position: absolute;
+}
+
+.circle {
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.mt20 {
+  margin-top:  20px;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.empty-block,
+.isNull-list,
+.no-data {
+  width: 100%;
+  height: 250px;
+  line-height: 18;
+  background: url('./../img/nothingData.svg') center no-repeat;
+  background-size: cover;
+  text-align: center;
+  color: #999;
+}
+
+.breadcrumbs {
+  padding: 20px 0;
+}
+
+.isNull-list {
+  border: 1px solid #eee;
+}
+
+.el-rate__icon {
+  margin-right: 2px;
+  font-size: 12px;
+}
+
+.table-layout {
+  display: table;
+  width: 100%;
+}
+
+.table-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.popper-dialog {
+  padding: 0;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.multi-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.unSelectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.verticle-middle {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%); /* IE 9 */
+  -webkit-transform: translate(0, -50%); /* Safari and Chrome */
+  -o-transform: translate(0, -50%); /* Opera */
+  -moz-transform: translate(0, -50%); /* Firefox */
+}
+
+/*状态显示角标*/
+.status-label {
+  width: 55px;
+  height: 55px;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.status-label p {
+  box-sizing: border-box;
+  width: 80px;
+  height: 39px;
+  position: absolute;
+  top: -5px;
+  left: -26px;
+  line-height: 35px;
+  padding-top: 8px;
+  text-align: center;
+  color: #fff;
+  transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg); /* IE 9 */
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg); /* Safari and Chrome */
+}
+
+.bg-gray {
+  background: #f3f3f3;
+}
+
+/*白背景色*/
+.bgc_w, .bgw {
+  background-color: #fff !important;
+}
+.bg_gray {
+  background-color: #eee !important;
+}
+
+.html * {
+  font-size: inherit !important;
+  line-height: 1.5;
+  text-align: justify;
+  word-wrap: break-word;
+}
+.html img {
+  display: block;
+  max-width: 100%;
+  margin: 0.166667rem auto;
+}
+/*没有滚动条*/
+.no-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+.no-scroll-bar::-webkit-scrollbar-thumb {
+  display: none;
+}
+.no-scroll-bar::-webkit-scrollbar-track {
+  display: none;
+}
+
+/* 隐藏播放器的下载按钮 */
+video::-internal-media-controls-download-button {
+    display:none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+
+video::-webkit-media-controls-panel {
+    width: calc(100% + 1.111111rem);
+}
+
+/* 公共头部 */
+.common-head {
+  padding: 15px 20px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-bottom:  1px solid #ccc;
+}

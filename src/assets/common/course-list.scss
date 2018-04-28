@@ -1,0 +1,40 @@
+
+@import '~@/assets/common/vars.scss';
+.course-list {
+	.course-list-item {
+		width: 25%;
+		padding: 5px;
+		.course-msg {
+			border-radius: 5px;
+			padding-bottom: 15px;
+			overflow: hidden;
+			.course-img {
+				width: 100%;
+				height: 200px;
+				margin-bottom: 10px;
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.course-tit {
+				font-size: 18px;
+				line-height: 1.5;
+				padding: 0 15px;
+				margin-bottom: 8px;
+			}
+			.author-date {
+				font-size: 14px;
+				line-height: 1.5;
+				color: #999;
+				padding: 0 15px;
+			}
+			&:hover {
+				box-shadow: 3px 3px 8px #ccc;
+				.course-tit {
+					color: $theme-color;
+				}
+			}
+		}
+	}
+}
