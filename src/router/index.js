@@ -55,7 +55,13 @@ const router = new Router({
                 { path: '/publishDiscuss', component: publishDiscuss, alias: '/discuss/publishDiscuss' }
             ]
         },
-        { path: '/resource', name: 'resource', component: resource },
+        { path: '/resource', name: 'resource', component: resource,
+            children: [
+                { path: '/courseIndex', component: courseIndex, alias: '/resource/courseIndex' },
+                { path: '/publishOnlineCourse', component: publishOnlineCourse, alias: '/resource/publishOnlineCourse' },
+                { path: '/courseDetail', component: courseDetail, alias: '/resource/courseDetail' }
+            ]
+        },
     ]
 })
 

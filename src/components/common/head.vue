@@ -55,11 +55,11 @@
 				],
 			}
 		},
-		computed: {
+		/*computed: {
 			...mapState({
 				ifLogin: state => state.ifLogin
 			})
-		},
+		},*/
 		created() {
 			if (localStorage.getItem('loginInfo')) {
 				this.userName = JSON.parse(localStorage.getItem('loginInfo')).name
