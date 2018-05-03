@@ -82,6 +82,7 @@
 			            registerRequest(params).then((res) => {
 			            	if (res.data.code === 100) {
 			            		this.showMsg('success', '注册成功，去登陆吧')
+			            		this.$router.push({ path: '/login' })
 			            	}
 			            })
 			        } else {

@@ -32,7 +32,7 @@
 		<section class="info-course">
 			<h4 class="common-head bgw">课程信息</h4>	
 			<ul class="course-list clearfix">
-				<router-link class="course-list-item fl" tag="li" :to="{ path: '/' }" v-for="(item, index) in courseList" :key="index">
+				<router-link class="course-list-item fl" tag="li" :to="{ path: '/info/infoCourseDetail', query: { id: item.id } }" v-for="(item, index) in courseList" :key="index">
 					<div class="course-msg bgw">
 						<div class="course-img">
 							<img :src="item.img" alt="">

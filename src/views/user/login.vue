@@ -53,7 +53,7 @@
 				const params = Object.assign({}, this.form)
 				loginRequest(params).then((res) => {
 					this.loading = false
-					if (res.data.code === 999) {
+					if (res.data.code === 100) {
 						this.showMsg('success', '登录成功')
 						const userMsg = JSON.stringify(res.data.data)
 						localStorage.setItem('loginInfo', userMsg)

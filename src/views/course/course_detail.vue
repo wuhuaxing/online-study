@@ -4,8 +4,10 @@
 			<video :src="detail.playUrl" autobuffer autoloop loop controls width="900" height="500" :poster="detail.img"></video>
 		</section>
 
-		<div class="course-msg bgw">
+		<div class="course-msg bgw pr">
 			<h4 class="course-tit">{{detail.title}}</h4>
+			<p class="msg-item">课程级别：{{detail.level}}</p>
+			<p class="msg-item">课程标签：<el-tag>{{detail.tab}}</el-tag></p>
 			<p class="msg-item">价格： ￥{{detail.price}}</p>
 			<p class="msg-item">学习人数：{{detail.learningNumber}}</p>
 			<article class="msg-desc">
@@ -50,6 +52,7 @@
 		}
 		.course-msg {
 			padding: 20px;
+			padding-right: 200px;
 			.course-tit {
 				font-size: 18px;
 				line-height: 1.5;

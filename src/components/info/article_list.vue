@@ -1,7 +1,7 @@
 <template>
 	<div class="article-list-wrap">
 		<ul class="article-list" v-if="articleList.length">
-			<router-link tag="li" :to="{ path: '/' }" class="article-list-item table-layout" v-for="(item, index) in articleList" :key="index">
+			<router-link tag="li" :to="{ path: '/info/articleDetail', query: { id: item.id } }" class="article-list-item table-layout" v-for="(item, index) in articleList" :key="index">
 				<div class="article-item-img table-cell">
 					<img :src="item.img">
 				</div>

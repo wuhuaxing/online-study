@@ -1,28 +1,9 @@
-<!--
-<template>
-	<div class="resource-wrap">
-		这是资源购买啊啊啊
-	</div>
-</template>
 
-<script>
-	export default {
-		name: 'resource',
-		data() {
-			return {}
-		}
-	}
-</script>
-
-<style lang="scss" scoped>
-	 @import '../../assets/common/vars.scss';
-</style>-->
-<!-- 资源购买（同网上教程一样） -->
 <template>
-    <div class="discuss-home-page">
-        <!--        <div class="publish-btn-group bgw">
-                    <el-button type="primary" plain @click="publish('/course/publishOnlineCourse')">发布网络课程</el-button>
-                </div>-->
+    <div class="discuss-home-page container">
+                <div class="publish-btn-group bgw">
+                    <el-button type="primary" plain @click="publish('/course/publishOnlineCourse')">发布资源</el-button>
+                </div>
         <!-- 课程 -->
         <section class="discuss-course">
             <h4 class="common-head bgw">资源购买</h4>
@@ -53,7 +34,7 @@
                 width="30%">
             <el-input
                     placeholder="请输入密码"
-                    suffix-icon="el-icon-date"
+                    type="password"
                     v-model="payPassword">
             </el-input>
             <span slot="footer" class="dialog-footer">
@@ -65,15 +46,9 @@
 </template>
 
 <script>
-    import {requestCourse} from '@/service/course.js'
-    import ElButton from "../../../node_modules/element-ui/packages/button/src/button";
-    import ElInput from "../../../node_modules/element-ui/packages/input/src/input";
+    import { requestCourse } from '@/service/course.js'
 
     export default {
-        components: {
-            ElInput,
-            ElButton
-        },
         name: 'discussHomePage',
         data() {
             return {
@@ -172,5 +147,7 @@
         padding: 20px;
         margin: 20px 0;
     }
-
+    .discuss-home-page {
+        margin-top: 20px;
+    }
 </style>

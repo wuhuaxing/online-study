@@ -17,11 +17,14 @@ import infoIndex from '@/views/info/info_homePage.vue'
 import publishArticle from '@/views/info/publish_article.vue'
 import publishNotice from '@/views/info/publish_notice.vue'
 import publishCourse from '@/views/info/publish_course.vue'
+import articleDetail from '@/views/info/article_detail.vue'
+import infoCourseDetail from '@/views/info/course_detail.vue'
 
 // 讨论区
 import discuss from '@/views/discuss/index.vue'
 import discussHomePage from '@/views/discuss/discuss_homePage.vue'
 import publishDiscuss from '@/views/discuss/publish_discuss.vue'
+import discussDetail from '@/views/discuss/discuss_detail.vue'
 
 // 资源购买
 import resource from '@/views/resource/resource.vue'
@@ -46,22 +49,19 @@ const router = new Router({
                 { path: '/infoIndex', component: infoIndex, alias: '/info/infoIndex' },
                 { path: '/publishArticle', component: publishArticle, alias: '/info/publishArticle' },
                 { path: '/publishNotice', component: publishNotice, alias: '/info/publishNotice' },
-                { path: '/publishCourse', component: publishCourse, alias: '/info/publishCourse' }
+                { path: '/publishCourse', component: publishCourse, alias: '/info/publishCourse' },
+                { path: '/articleDetail', component: articleDetail, alias: '/info/articleDetail' },
+                { path: '/infoCourseDetail', component: infoCourseDetail, alias: '/info/infoCourseDetail' }
             ]
         },
         { path: '/discuss', name: 'discuss', component: discuss, redirect: '/discuss/discussIndex',
             children: [
                 { path: '/discussIndex', component: discussHomePage, alias: '/discuss/discussIndex' },
-                { path: '/publishDiscuss', component: publishDiscuss, alias: '/discuss/publishDiscuss' }
+                { path: '/publishDiscuss', component: publishDiscuss, alias: '/discuss/publishDiscuss' },
+                { path: '/discussDetail', component: discussDetail, alias: '/discuss/discussDetail' }
             ]
         },
-        { path: '/resource', name: 'resource', component: resource,
-            children: [
-                { path: '/courseIndex', component: courseIndex, alias: '/resource/courseIndex' },
-                { path: '/publishOnlineCourse', component: publishOnlineCourse, alias: '/resource/publishOnlineCourse' },
-                { path: '/courseDetail', component: courseDetail, alias: '/resource/courseDetail' }
-            ]
-        },
+        { path: '/resource', name: 'resource', component: resource },
     ]
 })
 

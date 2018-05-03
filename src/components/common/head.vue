@@ -45,7 +45,6 @@
 		},
 		data() {
 			return {
-				userName: '',
 				navList: [ // 首页模块导航
 					{ label: '首页', path: '/', name: 'index' },
 					{ label: '网上教程', path: '/course', name: 'course' },
@@ -55,21 +54,13 @@
 				],
 			}
 		},
-		/*computed: {
-			...mapState({
-				ifLogin: state => state.ifLogin
-			})
-		},*/
 		created() {
-			if (localStorage.getItem('loginInfo')) {
-				this.userName = JSON.parse(localStorage.getItem('loginInfo')).name
-			}
-			console.log(this.ifLogin)
 		},
 		methods: {
 			logout() {
 				this.$router.push({ path: '/' })
 				localStorage.removeItem('loginInfo')
+				this.userName = ''
 			}
 		}
 	}
@@ -97,6 +88,7 @@
 	min-width: 1200px;
 	height: $head-h;
 	background: #ecf5ff;
+	transform: translateZ(0);
 	z-index: 999;
 	.head-content {
 		width: 1200px;

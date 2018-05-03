@@ -13,6 +13,27 @@
 					</li>
 				</ul>
 			</nav>
+
+			<!-- 课程 -->
+			<section class="discuss-course mb20">
+				<h4 class="common-head bgw">网络课程</h4>	
+				<ul class="course-list clearfix">
+					<router-link class="course-list-item fl" tag="li" :to="{ path: '/course/courseDetail', query: { id: item.id } }" v-for="(item, index) in courseList" :key="index">
+						<div class="course-msg bgw">
+							<div class="course-img">
+								<img :src="item.img" alt="">
+							</div>
+							<p class="course-tit ellipsis">{{item.title}}</p>
+							<p class="author-date">
+								<span>价格：￥{{item.price}}</span>
+							</p>
+							<p class="author-date">
+								<span>学习人数：{{item.learningNumber}}</span>
+							</p>
+						</div>
+					</router-link>
+				</ul>
+			</section>
 			<!-- 热门信息 -->
 			<section class="index-info clearfix bgw">
 				<div class="hot-article fl">
@@ -39,6 +60,7 @@
 	import noticeBoard from '@/components/common/notice_board.vue'
 	import articleList from '@/components/info/article_list.vue'
 	import { requestHotArticle } from '@/service/info.js'
+	import { requestCourse } from '@/service/course.js'
 
 	export default {
 		name: 'index',
@@ -56,11 +78,13 @@
 					{ label: '讨论区', path: '/discuss', icon: 'icon-bubbles3' },
 					{ label: '相关资源', path: '/resource', icon: 'icon-database' }
 				],
-				articleList: []
+				articleList: [],
+				courseList: [],
 			}
 		},
 		mounted() {
 			this.getArticle()
+			this.getCourseList()
 		},
 		methods: {
 			// 获取文章数据
@@ -70,13 +94,24 @@
 						this.articleList = res.data.data
 					}
 				})
-			}
+			},
+			
+			// 获取课程列表
+            getCourseList() {
+                const params = {}
+                requestCourse(params).then((res) => {
+                    if (res.data.code === 100) {
+                        this.courseList = res.data.data
+                    }
+                })
+            },
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
 @import '~@/assets/common/vars.scss';
+@import '~@/assets/common/course-list.scss';
 	.nav-wrap {
 		.nav-list {
 			.nav-item {

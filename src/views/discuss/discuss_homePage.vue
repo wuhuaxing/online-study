@@ -14,13 +14,13 @@
 							{{item.content}}
 						</article>
 						<p class="author-date">
-							<span>{{item.author}}</span>
+							<span class="c-blue">{{item.author}}</span>
 							发布于
 							<time>{{item.date | dateFormat('yyyy-MM-dd HH:mm')}}</time>
 						</p>
 					</div>
 					<div class="btn-box fr">
-						<el-button type="primary" @click="publish('/discuss/publishDiscuss')">参与讨论</el-button>
+						<el-button type="primary" @click="publish('/discuss/discussDetail', item.id)">参与讨论</el-button>
 					</div>
 				</li>
 			</ul>
@@ -51,12 +51,17 @@
                     }
                 })
             },
-            publish(path) {
-            	if (localStorage.getItem('loginInfo')) {
-            		this.$router.push({ path: path })
-            	} else {
-            		this.$message('请先登录再进行操作')
+            publish(path, id) {
+            	if (id) {
+            		this.$router.push({ path: path, query: { id: id } })
+            		return
             	}
+            	this.$router.push({ path: path })
+            	// if (localStorage.getItem('loginInfo')) {
+            	// 	this.$router.push({ path: path })
+            	// } else {
+            	// 	this.$message('请先登录再进行操作')
+            	// }
             } 
 		}
 	}
@@ -116,12 +121,12 @@
 			padding-right: 20px;
 			text-align: right;
 		}
-		&:hover {
-			box-shadow: 3px 3px 8px #ccc;
-			.course-tit {
-				color: $theme-color;
-			}
-		}
+		// &:hover {
+		// 	box-shadow: 3px 3px 8px #ccc;
+		// 	.course-tit {
+		// 		color: $theme-color;
+		// 	}
+		// }
 	}
 }
 </style>
