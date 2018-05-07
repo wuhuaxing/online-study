@@ -21,8 +21,8 @@
                         <p class="author-date">
                             <span>学习人数：{{item.learningNumber}}</span>
                         </p>
-                        <el-button style="width: 90%;  margin: 12px" type="primary" :disabled="item.isBuy" @click="btnClickBuy(item, index)">
-                            {{!item.isBuy ? '购买' : '已购买'}}
+                        <el-button style="width: 90%;  margin: 12px" type="primary" :disabled="item.buyId.length > 0 && item.buyId.includes(userId)" @click="btnClickBuy(item, index)">
+                            {{!item.buyId.length && item.buyId.includes(userId) ? '购买' : '已购买'}}
                         </el-button>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
     import { requestCourse } from '@/service/course.js'
 
     export default {
-        name: 'discussHomePage',
+        name: 'resources',
         data() {
             return {
                 courseList: [],
@@ -59,12 +59,13 @@
                 },
                 payPassword: '',
                 payItem: {},
-                payIndex: -1
+                payIndex: -1,
+                userId: localStorage.getItem('loginInfo') ? JSON.parse(localStorage.getItem('loginInfo')).id : ''
             }
         },
         mounted() {
             let historyCourseList = JSON.parse(localStorage.getItem('COURSE_LIST'))
-            if (historyCourseList && historyCourseList.length && historyCourseList.length > 0) {
+            if (historyCourseList && historyCourseList.length) {
                 this.courseList = historyCourseList
             } else {
                 this.getCourseList()
@@ -81,14 +82,14 @@
                     if (res.data.code === 100) {
                         this.courseList = res.data.data
                         for (let item of this.courseList) {
-                            item.isBuy = false
+                            item.buyId = []
                         }
                     }
                 })
             },
             publish(path) {
                 if (localStorage.getItem('loginInfo')) {
-                    this.$router.push({path: path})
+                    this.$router.push({ path: path })
                 } else {
                     this.$message('请先登录再进行操作')
                 }
@@ -96,8 +97,24 @@
             btnClickPay (item) {
                 console.log('支付', this.payIndex)
                 if (this.payPassword === '123456') {
+                    const buyId = JSON.parse(localStorage.getItem('loginInfo')).id
+                    // this.courseList[this.payIndex].isBuy = true
+                    let buyIds = []
+                    if (this.courseList[this.payIndex].buyId.length) {
+                        buyIds = this.courseList[this.payIndex].buyId.push(buyId)
+                    } else {
+                        buyIds = [buyId]
+                    }
+                    this.$set(this.courseList[this.payIndex], 'buyId', buyIds)
+                    if (localStorage.getItem('buyList')) {
+                        let buyList = JSON.parse(localStorage.getItem('buyList'))
+                        buyList.push(this.courseList[this.payIndex])
+                        localStorage.setItem('buyList', JSON.stringify(buyList))
+                    } else {
+                        let buyList = [this.courseList[this.payIndex]]
+                        localStorage.setItem('buyList', JSON.stringify(buyList))
+                    }
                     this.dialogVisible = false
-                    this.courseList[this.payIndex].isBuy = true
                     this.$message({
                         message: '购买成功',
                         type: 'success'
@@ -116,22 +133,20 @@
             },
             btnClickCourse (item, index) {
                 // 购买则正常跳转
-                if (item.isBuy) {
+                if (item.buyId.length && item.buyId.includes(this.userId)) {
                     this.$router.push(
                         {
-                            path: '/resource/courseDetail',
+                            path: '/course/courseDetail',
                             query: {
                                 id: item.id
                             }
                         }
-                    );
-                }
-                // 未购买则弹出购买弹窗
-                else {
+                    )
+                } else { // 未购买则弹出购买弹窗
                     this.$message({
                         message: '请先购买该课程',
                         type: 'warning'
-                    });
+                    })
                 }
             }
         }

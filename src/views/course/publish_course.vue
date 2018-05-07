@@ -29,7 +29,7 @@
 			</el-form-item>	
 			<el-form-item class="publish-btn-group">
 				<el-button type="primary" @click.prevent="publish">立即发布</el-button>
-				<el-button type="primary" plain @click.prevent="$router.push({ path: '/info' })">取消</el-button>
+				<el-button type="primary" plain @click.prevent="$router.push({ path: '/course' })">取消</el-button>
 			</el-form-item>
 		</el-form>
 	</div> 

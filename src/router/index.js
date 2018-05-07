@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Login from '@/views/user/login.vue'
 import Register from '@/views/user/register.vue'
+import modify from '@/views/user/modify_pwd.vue'
 import index from '@/views/index/index.vue'
 
 // 网上课程
@@ -28,15 +29,22 @@ import discussDetail from '@/views/discuss/discuss_detail.vue'
 
 // 资源购买
 import resource from '@/views/resource/resource.vue'
+import shopCar from '@/views/resource/buy_list.vue'
 
 
 Vue.use(Router)
 
 const router = new Router({
     routes: [
+        // 首页
         { path: '/', name: 'index', component: index },
+        // 登录页
         { path: '/login', name: 'login', component: Login },
+        // 注册页
         { path: '/register', name: 'register', component: Register },
+        // 找回密码
+        { path: '/modify', component: modify },
+        // 网络课程页面
         { path: '/course', name: 'course', component: course, redirect: '/course/courseIndex',
             children: [
                 { path: '/courseIndex', component: courseIndex, alias: '/course/courseIndex' },
@@ -44,6 +52,7 @@ const router = new Router({
                 { path: '/courseDetail', component: courseDetail, alias: '/course/courseDetail' }
             ]
         },
+        // 信息浏览页面
         { path: '/info', name: 'info', component: info, redirect: '/info/infoIndex',
             children: [
                 { path: '/infoIndex', component: infoIndex, alias: '/info/infoIndex' },
@@ -54,6 +63,7 @@ const router = new Router({
                 { path: '/infoCourseDetail', component: infoCourseDetail, alias: '/info/infoCourseDetail' }
             ]
         },
+        // 讨论区
         { path: '/discuss', name: 'discuss', component: discuss, redirect: '/discuss/discussIndex',
             children: [
                 { path: '/discussIndex', component: discussHomePage, alias: '/discuss/discussIndex' },
@@ -61,18 +71,9 @@ const router = new Router({
                 { path: '/discussDetail', component: discussDetail, alias: '/discuss/discussDetail' }
             ]
         },
+        // 资源购买页面s
         { path: '/resource', name: 'resource', component: resource },
+        { path: '/shopCar', component: shopCar }
     ]
 })
-
-
-// router.beforeEach((to, from, next) => {
-//     // console.log(to);
-//     if (to.path.indexOf('login') < 0 && !window.sessionStorage.getItem('access_token')) {
-//         router.replace('login');
-//         next();
-//     }
-//     next();
-// })
-
 export default router

@@ -21,6 +21,7 @@
 				  width="150"
 				  trigger="hover">
 				  	<ul class="operate-box">
+				  		<router-link :to="{ path: '/shopCar' }" tag="li" class="operate-item">我的购买</router-link>
 				  		<li class="operate-item" @click="logout"><i class="fa fa-sign-out"></i>退出</li>
 				  	</ul>
 				</el-popover>
@@ -50,11 +51,20 @@
 					{ label: '网上教程', path: '/course', name: 'course' },
 					{ label: '信息浏览', path: '/info', name: 'info' },
 					{ label: '讨论区', path: '/discuss', name: 'discuss' },
-					{ label: '相关资源', path: '/resource', name: 'resource' }
+					{ label: '资源购买', path: '/resource', name: 'resource' }
 				],
+				userName: localStorage.getItem('loginInfo') ? JSON.parse(localStorage.getItem('loginInfo')).name : ''
 			}
 		},
-		created() {
+		watch: {
+			'$route.path': {
+				handler: function (val, oldVal) {
+					if (val === '/' && oldVal === '/login') {
+						this.userName = localStorage.getItem('loginInfo') ? JSON.parse(localStorage.getItem('loginInfo')).name : ''
+					}
+				},
+				deep: true
+			}
 		},
 		methods: {
 			logout() {
@@ -71,7 +81,10 @@
 		padding-left: 20px;
 		.operate-item {
 			cursor: pointer;
+			padding: 5px;
+			margin-bottom: 10px;
 			&:hover {
+				background-color: #eee;
 				color: #a5e4ea;
 			}
 		}

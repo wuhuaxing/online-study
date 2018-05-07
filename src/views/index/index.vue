@@ -76,7 +76,7 @@
 					{ label: '网上教程', path: '/course', icon: 'icon-display' },
 					{ label: '信息浏览', path: '/info', icon: 'icon-newspaper' },
 					{ label: '讨论区', path: '/discuss', icon: 'icon-bubbles3' },
-					{ label: '相关资源', path: '/resource', icon: 'icon-database' }
+					{ label: '资源购买', path: '/resource', icon: 'icon-database' }
 				],
 				articleList: [],
 				courseList: [],

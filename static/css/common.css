@@ -201,3 +201,11 @@ video::-webkit-media-controls-panel {
   margin-bottom: 20px;
   border-bottom:  1px solid #ccc;
 }
+
+.c-blue {
+  color: #409eff;
+}
+
+.pdl10 {
+  padding-left: 10px;
+}

@@ -26,7 +26,6 @@
 
 <script>
 	import { registerRequest } from '@/service/user.js'
-	import qs from 'qs'
 
 	export default {
 		name: 'register',

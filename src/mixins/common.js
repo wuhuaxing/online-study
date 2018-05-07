@@ -2,7 +2,6 @@
 const common = {
 	data() {
 		return {
-			userName: localStorage.getItem('loginInfo') ? JSON.parse(localStorage.getItem('loginInfo')).name : ''
 		}
 	},
 	methods: {

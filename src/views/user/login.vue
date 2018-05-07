@@ -14,6 +14,10 @@
 						{{tips}}
 					</div>
 				</el-form>
+				<div class="m10 clearfix">
+					<router-link :to="{ path: '/register' }" class="fl c-blue" title="去注册">还没账号？去注册</router-link>
+					<router-link :to="{ path: '/modify' }" class="fr c-blue" title="找回密码">忘记密码？</router-link>
+				</div>
 				<div class="btn-box">
 					<el-button type="primary" size="medium" @click="login">登录</el-button>
 				</div>
@@ -77,6 +81,11 @@
 
 
 <style lang="scss" scoped>
+
+.m10 {
+	margin: 10px 0;
+}
+
 .login-wrap { 
 	overflow: hidden;
 	position: fixed;
