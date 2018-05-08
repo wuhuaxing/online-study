@@ -35,7 +35,7 @@
 				<router-link class="course-list-item fl" tag="li" :to="{ path: '/info/infoCourseDetail', query: { id: item.id } }" v-for="(item, index) in courseList" :key="index">
 					<div class="course-msg bgw">
 						<div class="course-img">
-							<img :src="item.img" alt="">
+							<img src="../../assets/logo.png">
 						</div>
 						<p class="course-tit ellipsis">{{item.title}}</p>
 						<p class="author-date">

@@ -21,7 +21,7 @@
 					<router-link class="course-list-item fl" tag="li" :to="{ path: '/course/courseDetail', query: { id: item.id } }" v-for="(item, index) in courseList" :key="index">
 						<div class="course-msg bgw">
 							<div class="course-img">
-								<img :src="item.img" alt="">
+								<img :src="handleImg(index)">
 							</div>
 							<p class="course-tit ellipsis">{{item.title}}</p>
 							<p class="author-date">
@@ -57,6 +57,10 @@
     import banner4 from '@/assets/banner/banner4.jpg'
     import banner5 from '@/assets/banner/banner5.jpg'
     import banner6 from '@/assets/banner/banner1.jpg'
+    import img1 from '@/assets/danpianji.png'
+    import img2 from '@/assets/java.png'
+    import img3 from '@/assets/logo.png'
+    import img4 from '@/assets/qianrushi.png'
 	import noticeBoard from '@/components/common/notice_board.vue'
 	import articleList from '@/components/info/article_list.vue'
 	import { requestHotArticle } from '@/service/info.js'
@@ -87,6 +91,25 @@
 			this.getCourseList()
 		},
 		methods: {
+			handleImg(index) {
+				switch (index) {
+					case 0:
+						return img1
+						break
+					case 1:
+						return img2
+						break
+					case 2:
+						return img3
+						break
+					case 3:
+						return img4
+						break
+					default:
+						return img3
+						break
+				}
+			},
 			// 获取文章数据
 			getArticle() {
 				requestHotArticle({}).then((res) => {

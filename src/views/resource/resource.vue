@@ -12,7 +12,7 @@
                      v-for="(item, index) in courseList" :key="index">
                     <div class="course-msg bgw">
                         <div class="course-img">
-                            <img :src="item.img" alt="">
+                            <img :src="handleImg(index)" alt="">
                         </div>
                         <p class="course-tit ellipsis">{{item.title}}</p>
                         <p class="author-date">
@@ -21,8 +21,8 @@
                         <p class="author-date">
                             <span>学习人数：{{item.learningNumber}}</span>
                         </p>
-                        <el-button style="width: 90%;  margin: 12px" type="primary" :disabled="item.buyId.length > 0 && item.buyId.includes(userId)" @click="btnClickBuy(item, index)">
-                            {{!item.buyId.length && item.buyId.includes(userId) ? '购买' : '已购买'}}
+                        <el-button style="width: 90%;  margin: 12px" type="primary" :disabled="item.buyId.length > 0 && item.buyId.includes(userId)" @click.stop="btnClickBuy(item, index)">
+                            {{item.buyId.length > 0 && item.buyId.includes(userId) ? '已购买' : '购买'}}
                         </el-button>
                     </div>
                 </div>
@@ -47,6 +47,10 @@
 
 <script>
     import { requestCourse } from '@/service/course.js'
+    import img1 from '@/assets/danpianji.png'
+    import img2 from '@/assets/java.png'
+    import img3 from '@/assets/logo.png'
+    import img4 from '@/assets/qianrushi.png'
 
     export default {
         name: 'resources',
@@ -75,6 +79,25 @@
             localStorage.setItem('COURSE_LIST',JSON.stringify(this.courseList))
         },
         methods: {
+            handleImg(index) {
+                switch (index) {
+                    case 0:
+                        return img1
+                        break
+                    case 1:
+                        return img2
+                        break
+                    case 2:
+                        return img3
+                        break
+                    case 3:
+                        return img4
+                        break
+                    default:
+                        return img3
+                        break
+                }
+            },
             // 获取课程列表
             getCourseList() {
                 const params = {}
@@ -127,9 +150,13 @@
                 }
             },
             btnClickBuy (item, index) {
-                this.dialogVisible = true
-                this.payItem = item
-                this.payIndex = index
+                if (localStorage.getItem('loginInfo')) {
+                    this.dialogVisible = true
+                    this.payItem = item
+                    this.payIndex = index
+                } else {
+                    this.$message('请先登录再进行操作')
+                }
             },
             btnClickCourse (item, index) {
                 // 购买则正常跳转

@@ -5,14 +5,14 @@
 			<ul class="" v-if="buyList.length">
 				<li class="list-item table-layout" v-for="(item, index) in buyList" :key="index">
 					<div class="info-img table-cell">
-						<img :src="item.img" alt="" width="180" height="100">
+						<img :src="handleImg(index)" alt="" width="180" height="100">
 					</div>
 					<div class="list-info table-cell">
 						<h4 class="info-tit">{{item.title}}</h4>
 						<p>价格: ￥{{item.price}}</p>
 					</div>
 					<div class="table-cell list-btn">
-						<el-button type="primary" @click="$router.push({ path: '/course/courseDetail', id: item.id })">查看详情</el-button>
+						<el-button type="primary" @click="$router.push({ path: '/course/courseDetail', query: { id: item.id } })">查看详情</el-button>
 					</div>
 				</li>
 			</ul>
@@ -22,6 +22,11 @@
 </template>
 
 <script>
+	import img1 from '@/assets/danpianji.png'
+    import img2 from '@/assets/java.png'
+    import img3 from '@/assets/logo.png'
+    import img4 from '@/assets/qianrushi.png'
+
 	export default {
 		data() {
 			return {
@@ -32,7 +37,27 @@
 		mounted() {
 			const buyList = localStorage.getItem('buyList') ? JSON.parse(localStorage.getItem('buyList')) : []
 			this.buyList = buyList.filter((x) => x.buyId.includes(this.userId))
-			console.log(this.buyList)
+		},
+		methods: {
+			handleImg(index) {
+				switch (index) {
+					case 0:
+						return img1
+						break
+					case 1:
+						return img2
+						break
+					case 2:
+						return img3
+						break
+					case 3:
+						return img4
+						break
+					default:
+						return img3
+						break
+				}
+			},
 		}
 	}
 </script>
@@ -56,6 +81,10 @@
 		}
 		.list-btn {
 			text-align: right;
+		}
+
+		.list-info {
+			padding-left: 20px;
 		}
 	}
 </style>

@@ -2,7 +2,7 @@
 	<div class="detail-wrap mt20">
 		<section class="detail-msg table-layout bgw">
 			<div class="detail-img table-cell">
-				<img :src="detail.img" width="400" height="220">
+				<img src="../../assets/logo.png" width="400" height="200">
 			</div>
 			<div class="msg-item table-cell">
 				<h4 class="detail-tit">{{detail.title}}</h4>

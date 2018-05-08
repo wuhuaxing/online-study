@@ -1,7 +1,7 @@
 <template>
 	<div class="course-detail">
 		<section class="video-wrap bgw">
-			<video :src="detail.playUrl" autobuffer autoloop loop controls width="900" height="500" :poster="detail.img"></video>
+			<video src="../../assets/java.mp4" autobuffer autoloop loop controls width="900" height="500"></video>
 		</section>
 
 		<div class="course-msg bgw pr">
