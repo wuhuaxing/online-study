@@ -21,6 +21,7 @@
 				  width="150"
 				  trigger="hover">
 				  	<ul class="operate-box">
+				  		<router-link v-if="role == 'teacher'" :to="{ path: '/course/myCourse' }" tag="li" class="operate-item">我的课程</router-link>
 				  		<router-link :to="{ path: '/shopCar' }" tag="li" class="operate-item">我的购买</router-link>
 				  		<li class="operate-item" @click="logout"><i class="fa fa-sign-out"></i>退出</li>
 				  	</ul>
@@ -53,7 +54,8 @@
 					{ label: '讨论区', path: '/discuss', name: 'discuss' },
 					{ label: '资源购买', path: '/resource', name: 'resource' }
 				],
-				userName: localStorage.getItem('loginInfo') ? JSON.parse(localStorage.getItem('loginInfo')).name : ''
+				userName: localStorage.getItem('loginInfo') ? JSON.parse(localStorage.getItem('loginInfo')).name : '',
+				role: localStorage.getItem('loginInfo') ? JSON.parse(localStorage.getItem('loginInfo')).role : '',
 			}
 		},
 		watch: {
@@ -61,6 +63,7 @@
 				handler: function (val, oldVal) {
 					if (val === '/' && oldVal === '/login') {
 						this.userName = localStorage.getItem('loginInfo') ? JSON.parse(localStorage.getItem('loginInfo')).name : ''
+						this.role = localStorage.getItem('loginInfo') ? JSON.parse(localStorage.getItem('loginInfo')).role : ''
 					}
 				},
 				deep: true

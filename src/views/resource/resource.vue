@@ -1,9 +1,9 @@
 
 <template>
     <div class="discuss-home-page container">
-                <div class="publish-btn-group bgw">
-                    <el-button type="primary" plain @click="publish('/course/publishOnlineCourse')">发布资源</el-button>
-                </div>
+        <div class="publish-btn-group bgw">
+            <el-button type="primary" plain @click="publish('/course/publishOnlineCourse')">发布资源</el-button>
+        </div>
         <!-- 课程 -->
         <section class="discuss-course">
             <h4 class="common-head bgw">资源购买</h4>

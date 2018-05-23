@@ -64,18 +64,14 @@
 	}
 </script>
 
-<style lang="scss" scoped>
-	.detail-content {
-		p {
-			font-size: 14px;
-			line-height: 1.5;
-			text-indent: 2em;
-		}
-	}
-</style>
 
 <style lang="scss" scoped>
 	@import '~@/assets/common/vars.scss';
+	.detail-content {
+		font-size: 14px;
+		line-height: 1.5;
+		text-indent: 2em;
+	}
 	.c-blue {
 		color: $theme-color;
 	}

@@ -11,6 +11,7 @@ import course from '@/views/course/index.vue'
 import courseIndex from '@/views/course/course_homePage.vue'
 import publishOnlineCourse from '@/views/course/publish_course.vue'
 import courseDetail from '@/views/course/course_detail.vue'
+import myCourse from '@/views/course/my_course.vue'
 
 // 信息预览
 import info from '@/views/info/index.vue'
@@ -52,6 +53,7 @@ const router = new Router({
                 { path: '/courseDetail', component: courseDetail, alias: '/course/courseDetail' }
             ]
         },
+        { path: '/course/myCourse', component: myCourse },
         // 信息浏览页面
         { path: '/info', name: 'info', component: info, redirect: '/info/infoIndex',
             children: [

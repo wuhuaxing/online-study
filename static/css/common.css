@@ -52,7 +52,7 @@
 .isNull-list,
 .no-data {
   width: 100%;
-  height: 250px;
+  height: 367px;
   line-height: 18;
   background: url('./../img/nothingData.svg') center no-repeat;
   background-size: cover;
