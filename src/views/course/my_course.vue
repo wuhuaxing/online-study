@@ -12,18 +12,19 @@
 						<p>价格: ￥{{item.price}}</p>
 					</div>
 					<div class="table-cell list-btn">
+						<el-button type="primary" @click="$router.push({ path: '/course/chapters', query: { id: item.id } })">课时管理</el-button>
 						<el-button type="primary" @click="addChapter(item.id)">添加课时</el-button>
 					</div>
 				</li>
 			</ul>
-			<div class="empty-block" v-else>暂无购买记录哦</div>
+			<div class="empty-block" v-else>暂无数据哦</div>
 		</div>
 		<el-dialog :visible.sync="visible" title="添加课时">
-			<el-form :model="form" ref="form" label-width="100px" :rules="rules">
+			<el-form :model="form" ref="form" label-width="110px" :rules="rules">
 				<el-form-item label="章节名称" prop="name">
 					<el-input v-model="form.name" placeholder="请输入章节名称"></el-input>
 				</el-form-item>
-				<el-form-item label="相关链接名称" prop="link">
+				<el-form-item label="相关链接名称" prop="linkName">
 					<el-input v-model="form.linkName" placeholder="请输入相关链接名称"></el-input>
 				</el-form-item>
 				<el-form-item label="相关链接" prop="link">

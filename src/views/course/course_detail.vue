@@ -24,8 +24,8 @@
 		<section class="chapter-wrap bgw">
 			<h4 class="common-head bgw">课程课时</h4>
 			<ul class="chapter-list" v-if="chapter.length">
-				<li class="list-item" v-for="(item, index) in chapter" :key='index'>
-					<i class="icon-play"></i>{{item.name}}
+				<li class="list-item" v-for="(item, index) in chapter" :key='index' @click="changeChapter(index)">
+					<i class="icon-play"></i>第 {{index + 1}} 课 {{item.name}}
 				</li>
 			</ul>
 			<div class="empty-block" v-else>
@@ -73,6 +73,7 @@
 			changeChapter(index) {
 				this.curChapter = this.chapter[index]
 				this.curSrc = this.videos[index]
+				window.scrollTo(0, 200)
 			}
 		}
 	}
